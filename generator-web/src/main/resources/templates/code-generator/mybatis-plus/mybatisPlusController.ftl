@@ -18,9 +18,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
-* @description ${classInfo.classComment}
 * @author ${authorName}
+* @Version 1.0.0
 * @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
 */
 @Slf4j
 @RestController
@@ -28,7 +29,7 @@ import java.util.Map;
 public class ${classInfo.className}Controller {
 
     @Autowired
-    private ${classInfo.className}Mapper ${classInfo.className?uncap_first}Mapper;
+    private I${classInfo.className}Mapper i${classInfo.className?uncap_first}Mapper;
 
     /**
     * 新增或编辑
@@ -36,12 +37,12 @@ public class ${classInfo.className}Controller {
     @PostMapping("/save")
     public Object save(@RequestBody ${classInfo.className} ${classInfo.className?uncap_first}){
         log.info("${classInfo.className?uncap_first}:"+JSON.toJSONString(${classInfo.className?uncap_first}));
-        ${classInfo.className} old${classInfo.className} = ${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",${classInfo.className?uncap_first}.get${classInfo.className}Id()));
+        ${classInfo.className} old${classInfo.className} = i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",${classInfo.className?uncap_first}.get${classInfo.className}Id()));
         ${classInfo.className?uncap_first}.setUpdateTime(new Date());
         if(old${classInfo.className}!=null){
-            ${classInfo.className?uncap_first}Mapper.updateById(${classInfo.className?uncap_first});
+            i${classInfo.className?uncap_first}Mapper.updateById(${classInfo.className?uncap_first});
         }else{
-        if(${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_name",${classInfo.className?uncap_first}.get${classInfo.className}Name()))!=null){
+        if(i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_name",${classInfo.className?uncap_first}.get${classInfo.className}Name()))!=null){
             return ${returnUtil}.ERROR("保存失败，名字重复");
         }
         ${classInfo.className?uncap_first}.setCreateTime(new Date());
@@ -55,9 +56,9 @@ public class ${classInfo.className}Controller {
     */
     @PostMapping("/delete")
     public Object delete(int id){
-    ${classInfo.className} ${classInfo.className?uncap_first} = ${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
+    ${classInfo.className} ${classInfo.className?uncap_first} = i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
         if(${classInfo.className?uncap_first}!=null){
-            ${classInfo.className?uncap_first}Mapper.deleteById(id);
+            i${classInfo.className?uncap_first}Mapper.deleteById(id);
             return ${returnUtil}.SUCCESS("删除成功");
         }else{
             return ${returnUtil}.ERROR("没有找到该对象");
@@ -69,7 +70,7 @@ public class ${classInfo.className}Controller {
     */
     @PostMapping("/find")
     public Object find(int id){
-    ${classInfo.className} ${classInfo.className?uncap_first} = ${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
+    ${classInfo.className} ${classInfo.className?uncap_first} = i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
         if(${classInfo.className?uncap_first}!=null){
             return ${returnUtil}.SUCCESS(${classInfo.className?uncap_first});
         }else{
@@ -82,8 +83,8 @@ public class ${classInfo.className}Controller {
     */
     @PostMapping("/list")
     public Object list(String searchParams,
-    @RequestParam(required = false, defaultValue = "0") int page,
-    @RequestParam(required = false, defaultValue = "10") int limit) {
+        @RequestParam(required = false, defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "10") int limit) {
         log.info("page:"+page+"-limit:"+limit+"-json:"+ JSON.toJSONString(searchParams));
         //分页构造器
         Page<${classInfo.className}> buildPage = new Page<${classInfo.className}>(page,limit);
@@ -94,7 +95,7 @@ public class ${classInfo.className}Controller {
             queryWrapper.eq(StringUtils.isNoneEmpty(${classInfo.className?uncap_first}.get${classInfo.className}Name()), "${classInfo.className?uncap_first}_name", ${classInfo.className?uncap_first}.get${classInfo.className}Name());
         }
         //执行分页
-        IPage<${classInfo.className}> pageList = ${classInfo.className?uncap_first}Mapper.selectPage(buildPage, queryWrapper);
+        IPage<${classInfo.className}> pageList = i${classInfo.className?uncap_first}Mapper.selectPage(buildPage, queryWrapper);
         //返回结果
         return ${returnUtil}.PAGE(pageList.getRecords(),pageList.getTotal());
     }
@@ -103,8 +104,8 @@ public class ${classInfo.className}Controller {
     */
     @PostMapping("/list2")
     public ReturnT list2(String searchParams,
-    @RequestParam(required = false, defaultValue = "0") int page,
-    @RequestParam(required = false, defaultValue = "10") int limit) {
+        @RequestParam(required = false, defaultValue = "0") int page,
+        @RequestParam(required = false, defaultValue = "10") int limit) {
         log.info("searchParams:"+ JSON.toJSONString(searchParams));
         //通用模式
         ${classInfo.className} queryParamDTO = JSON.parseObject(searchParams, ${classInfo.className}.class);
@@ -113,8 +114,8 @@ public class ${classInfo.className}Controller {
         //queryParamDTO.setPage((page - 1)* limit);
         //queryParamDTO.setLimit(limit);
         //(page - 1) * limit, limit
-        List<${classInfo.className}> itemList = ${classInfo.className?uncap_first}Mapper.pageAll(queryParamDTO,(page - 1)* limit,limit);
-        Integer itemCount = ${classInfo.className?uncap_first}Mapper.countAll(queryParamDTO);
+        List<${classInfo.className}> itemList = i${classInfo.className?uncap_first}Mapper.pageAll(queryParamDTO,(page - 1)* limit,limit);
+        Integer itemCount = i${classInfo.className?uncap_first}Mapper.countAll(queryParamDTO);
         //返回结果
         return ReturnT.PAGE(itemList,itemCount);
     }
@@ -125,7 +126,7 @@ public class ${classInfo.className}Controller {
 
     @GetMapping("/edit")
     public ModelAndView editPage(int id){
-        ${classInfo.className} ${classInfo.className?uncap_first} = ${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
+        ${classInfo.className} ${classInfo.className?uncap_first} = i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
         return new ModelAndView("cms/${classInfo.className?uncap_first}-edit","${classInfo.className?uncap_first}",${classInfo.className?uncap_first});
     }
 
@@ -134,11 +135,11 @@ public class ${classInfo.className}Controller {
     */
     @PostMapping("/publish")
     public Object publish(int id,Integer status){
-        ${classInfo.className} ${classInfo.className?uncap_first} = ${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
+        ${classInfo.className} ${classInfo.className?uncap_first} = i${classInfo.className?uncap_first}Mapper.selectOne(new QueryWrapper<${classInfo.className}>().eq("${classInfo.className?uncap_first}_id",id));
         if(${classInfo.className?uncap_first}!=null){
             ${classInfo.className?uncap_first}.setUpdateTime(new Date());
             ${classInfo.className?uncap_first}.setStatus(status);
-            ${classInfo.className?uncap_first}Mapper.updateById(${classInfo.className?uncap_first});
+           i ${classInfo.className?uncap_first}Mapper.updateById(${classInfo.className?uncap_first});
             return ReturnT.SUCCESS((status==1)?"已发布":"已暂停");
         }else if(status.equals(${classInfo.className?uncap_first}.getStatus())){
             return ReturnT.SUCCESS("状态不正确");

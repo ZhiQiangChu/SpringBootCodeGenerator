@@ -4,6 +4,7 @@ import com.softdev.system.generator.entity.ClassInfo;
 import com.softdev.system.generator.entity.ParamInfo;
 import com.softdev.system.generator.entity.ReturnT;
 import com.softdev.system.generator.service.GeneratorService;
+import com.softdev.system.generator.util.FileUtils;
 import com.softdev.system.generator.util.TableParseUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,56 @@ public class IndexController {
 
         //3.generate the code by freemarker template and param . Freemarker根据参数和模板生成代码
         Map<String, String> result = generatorService.getResultByParams(params);
+
+
+        for(Map.Entry<String, String> entry : result.entrySet()){
+            String mapKey = entry.getKey();
+            String mapValue = entry.getValue();
+            if ("tableName".equals(mapKey)) {
+                continue;
+            }
+            System.out.println(mapKey+":\n"+mapValue);
+            String fileName =  paramInfo.getPackageName().replace(".","/") +"/";
+
+            String javaFile = "";
+
+            switch (mapKey) {
+
+                case "json" :
+                    fileName += mapKey+".json";
+                    break;
+                case "sql" :
+                    fileName += mapKey+".sql";
+                    break;
+                case "xml" :
+                    fileName += mapKey+".xml";
+                    break;
+                case "mybatisMapper":
+                    String[] strings2 = mapValue.split(">");
+                    for (String ss :strings2) {
+                        if (ss.startsWith("\r\n<mapper") || ss.startsWith("\n<mapper") ||  ss.startsWith("<mapper")) {
+                            int index = ss.lastIndexOf(".");
+                            javaFile  = ss.substring(index+1,ss.length()-1);
+                            System.out.println(javaFile);
+                        }
+                    }
+                    fileName += mapKey+"/"+javaFile+".xml";
+                    break;
+                default:
+                    String[] strings = mapValue.split("\n");
+                    for (String str :strings) {
+                        if (str.startsWith("public class") || str.startsWith("public interface")) {
+                            javaFile = str.split(" ")[2];
+                            System.out.println(javaFile);
+                        }
+                    }
+                    fileName += mapKey+"/"+javaFile+".java";
+
+            }
+            log.info("fileName  >>>>  "+fileName);
+            FileUtils.writeStringToFile(fileName,mapValue,"utf-8",false);
+
+        }
 
         return ReturnT.SUCCESS(result);
     }

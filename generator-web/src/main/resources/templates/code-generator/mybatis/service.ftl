@@ -1,11 +1,12 @@
 import java.util.Map;
 
 /**
- * @description ${classInfo.classComment}
- * @author ${authorName}
- * @date ${.now?string('yyyy-MM-dd')}
- */
-public interface ${classInfo.className}Service {
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
+*/
+public interface I${classInfo.className}Service {
 
     /**
     * 新增

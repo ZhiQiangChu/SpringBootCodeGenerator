@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description ${classInfo.classComment}
- * @author ${authorName}
- * @date ${.now?string('yyyy-MM-dd')}
- */
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
+*/
 @RestController
 @RequestMapping("/${classInfo.className?uncap_first}")
 public class ${classInfo.className}Controller {

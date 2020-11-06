@@ -1,6 +1,8 @@
 /**
-* ${classInfo.classComment}对象Get Set
-* @author ${authorName} ${.now?string('yyyy-MM-dd')}
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
 */
 
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>

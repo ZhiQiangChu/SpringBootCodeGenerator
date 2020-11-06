@@ -242,7 +242,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">作者</span>
             </div>
-            <input type="text" class="form-control" id="authorName" name="authorName" value="zhengkai.blog.csdn.net">
+            <input type="text" class="form-control" id="authorName" name="authorName" value="chuzhiqiang">
             <div class="input-group-prepend">
                 <span class="input-group-text">返回</span>
             </div>
@@ -250,7 +250,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">包名</span>
             </div>
-            <input type="text" class="form-control" id="packageName" name="packageName" value="com.softdev.system">
+            <input type="text" class="form-control" id="packageName" name="packageName" value="com.allinmd.inp">
         </div>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -305,29 +305,32 @@
             </select>
         </div>
         <textarea id="ddlSqlArea" placeholder="请输入表结构信息..." class="form-control btn-lg" style="height: 250px;">
-CREATE TABLE 'userinfo' (
-  'user_id' int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  'user_name' varchar(255) NOT NULL COMMENT '用户名',
-  'addtime' datetime NOT NULL COMMENT '创建时间',
-  PRIMARY KEY ('user_id')
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息'
+            CREATE TABLE 'User_Info' (
+              'user_id' int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+              'user_name' varchar(255) NOT NULL COMMENT '用户名',
+              'add_time' datetime NOT NULL COMMENT '创建时间',
+              PRIMARY KEY ('user_id')
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户信息'
         </textarea><br>
         <p><button class="btn btn-primary btn-lg disabled" id="btnGenCode" role="button" data-toggle="popover" data-content="">开始生成 »</button> <button class="btn alert-secondary" id="btnCopy">一键复制</button></p>
         <div id="history" class="btn-group" role="group" aria-label="Basic example"></div>
         <hr>
         <!-- Example row of columns -->
+<#--        <div class="row" style="margin-top: 10px;">-->
+<#--            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">-->
+<#--                <div class="input-group">-->
+<#--                    <div class="input-group-prepend">-->
+<#--                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">通用实体</div>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--                <div class="btn-group" role="group" aria-label="First group">-->
+<#--                    <button type="button" class="btn btn-default generator" id="model">entity(set/get)</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="dto">entity(lombok)</button>-->
+<#--                </div>-->
+<#--            </div>-->
+<#--        </div>-->
+
         <div class="row" style="margin-top: 10px;">
-            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">通用实体</div>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="model">entity(set/get)</button>
-                    <button type="button" class="btn btn-default generator" id="beetlentity">entity(lombok)</button>
-                </div>
-            </div>
             <div class="btn-toolbar col-md-7" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="input-group">
                     <div class="input-group-prepend">
@@ -335,93 +338,96 @@ CREATE TABLE 'userinfo' (
                     </div>
                 </div>
                 <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="beanutil">BeanUtil</button>
+                    <#--                    <button type="button" class="btn btn-default generator" id="beanutil">BeanUtil</button>-->
                     <button type="button" class="btn btn-default generator" id="sql">SQL(CRUD)</button>
                     <button type="button" class="btn btn-default generator" id="json">JSON</button>
                     <button type="button" class="btn btn-default generator" id="xml">XML</button>
                 </div>
             </div>
         </div>
+
         <!-- Example row of columns -->
         <div class="row" style="margin-top: 10px;">
-            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-toolbar col-md-10" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">MybatisPlus</div>
                     </div>
                 </div>
                 <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="plusentity">entity</button>
-                    <button type="button" class="btn btn-default generator" id="plusmapper">mapper</button>
-                    <button type="button" class="btn btn-default generator" id="pluscontroller">controller</button>
+                    <button type="button" class="btn btn-default generator" id="mybatisPlusEntity">mybatisPlusEntity</button>
+                    <button type="button" class="btn btn-default generator" id="mybatisPlusMapper">mybatisPlusMapper</button>
+                    <button type="button" class="btn btn-default generator" id="mybatisPlusController">mybatisPlusController</button>
                 </div>
             </div>
 
-            <div class="btn-toolbar col-md-7" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">UI</div>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="swagger-ui">swagger-ui</button>
-                    <button type="button" class="btn btn-default generator" id="element-ui">element-ui</button>
-                    <button type="button" class="btn btn-default generator" id="bootstrap-ui">bootstrap-ui</button>
-                    <button type="button" class="btn btn-default generator" id="layui-edit">layui-edit</button>
-                    <button type="button" class="btn btn-default generator" id="layui-list">layui-list</button>
-                </div>
-            </div>
+<#--            <div class="btn-toolbar col-md-7" role="toolbar" aria-label="Toolbar with button groups">-->
+<#--                <div class="input-group">-->
+<#--                    <div class="input-group-prepend">-->
+<#--                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">UI</div>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--                <div class="btn-group" role="group" aria-label="First group">-->
+<#--                    <button type="button" class="btn btn-default generator" id="swagger-ui">swagger-ui</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="element-ui">element-ui</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="bootstrap-ui">bootstrap-ui</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="layui-edit">layui-edit</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="layui-list">layui-list</button>-->
+<#--                </div>-->
+<#--            </div>-->
         </div>
 
+<#--        <div class="row" style="margin-top: 10px;">-->
+<#--            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">-->
+<#--                <div class="input-group">-->
+<#--                    <div class="input-group-prepend">-->
+<#--                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">BeetlSQL</div>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--                <div class="btn-group" role="group" aria-label="First group">-->
+<#--                    <button type="button" class="btn btn-default generator" id="beetlmd">beetlmd</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="beetlcontroller">beetlcontroller</button>-->
+<#--                </div>-->
+<#--            </div>-->
+<#--            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">-->
+<#--                <div class="input-group">-->
+<#--                    <div class="input-group-prepend">-->
+<#--                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">JPA</div>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--                <div class="btn-group" role="group" aria-label="First group">-->
+<#--                    <button type="button" class="btn btn-default generator" id="entity">jpa-entity</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="repository">repository</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="jpacontroller">controller</button>-->
+<#--                </div>-->
+<#--            </div>-->
+<#--        </div>-->
         <div class="row" style="margin-top: 10px;">
-            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">BeetlSQL</div>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="beetlmd">beetlmd</button>
-                    <button type="button" class="btn btn-default generator" id="beetlcontroller">beetlcontroller</button>
-                </div>
-            </div>
-            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">JPA</div>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="entity">jpa-entity</button>
-                    <button type="button" class="btn btn-default generator" id="repository">repository</button>
-                    <button type="button" class="btn btn-default generator" id="jpacontroller">controller</button>
-                </div>
-            </div>
-        </div>
-        <div class="row" style="margin-top: 10px;">
-            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">JdbcTemplate</div>
-                    </div>
-                </div>
-                <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="jtdaoimpl">daoimpl</button>
-                    <button type="button" class="btn btn-default generator" id="jtdao">dao</button>
-                </div>
-            </div>
-            <div class="btn-toolbar col-md-7" role="toolbar" aria-label="Toolbar with button groups">
+<#--            <div class="btn-toolbar col-md-5" role="toolbar" aria-label="Toolbar with button groups">-->
+<#--                <div class="input-group">-->
+<#--                    <div class="input-group-prepend">-->
+<#--                        <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">JdbcTemplate</div>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--                <div class="btn-group" role="group" aria-label="First group">-->
+<#--                    <button type="button" class="btn btn-default generator" id="jtdaoimpl">daoimpl</button>-->
+<#--                    <button type="button" class="btn btn-default generator" id="jtdao">dao</button>-->
+<#--                </div>-->
+<#--            </div>-->
+            <div class="btn-toolbar col-md-10" role="toolbar" aria-label="Toolbar with button groups">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="btn btn-secondary disabled setWidth" id="btnGroupAddon">Mybatis</div>
                     </div>
                 </div>
                 <div class="btn-group" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-default generator" id="mybatis">ibatisXml</button>
+                    <button type="button" class="btn btn-default generator" id="mybatisMapper">mybatisMapper.xml</button>
                     <button type="button" class="btn btn-default generator" id="mapper">mapper</button>
-                    <button type="button" class="btn btn-default generator" id="mapper2">mapper2</button>
+                    <button type="button" class="btn btn-default generator" id="annotationMapper">annotationMapper</button>
+                    <button type="button" class="btn btn-default generator" id="dto">dto</button>
+                    <button type="button" class="btn btn-default generator" id="vo">vo</button>
                     <button type="button" class="btn btn-default generator" id="service">service</button>
-                    <button type="button" class="btn btn-default generator" id="service_impl">serviceImpl</button>
+                    <button type="button" class="btn btn-default generator" id="service.impl">serviceImpl</button>
                     <button type="button" class="btn btn-default generator" id="controller">controller</button>
                 </div>
             </div>

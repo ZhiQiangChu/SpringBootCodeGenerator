@@ -13,10 +13,11 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * @description ${classInfo.classComment}
- * @author ${authorName}
- * @date ${.now?string('yyyy-MM-dd')}
- */
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
+*/
 @Entity
 @Data
 @Table(name="${classInfo.tableName}")<#if swagger?exists && swagger==true>

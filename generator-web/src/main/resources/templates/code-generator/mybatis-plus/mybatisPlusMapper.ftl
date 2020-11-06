@@ -7,12 +7,13 @@ import ${packageName}.entity.${classInfo.className};
 import java.util.List;
 
 /**
- * @description ${classInfo.classComment}
- * @author ${authorName}
- * @date ${.now?string('yyyy-MM-dd')}
- */
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
+*/
 @Mapper
-public interface ${classInfo.className}Mapper extends BaseMapper<${classInfo.className}> {
+public interface I${classInfo.className}Mapper extends BaseMapper<${classInfo.className}> {
 
     @Select(
     "<script>select t0.* from ${classInfo.tableName} t0 " +

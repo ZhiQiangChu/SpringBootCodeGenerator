@@ -6,10 +6,11 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * @description ${classInfo.classComment}
- * @author ${authorName}
- * @date ${.now?string('yyyy-MM-dd')}
- */
+* @author ${authorName}
+* @Version 1.0.0
+* @date ${.now?string('yyyy-MM-dd')}
+* @description ${classInfo.classComment}
+*/
 @Repository
 public class ${classInfo.className}DaoImpl implements I${classInfo.className}Dao{
 
