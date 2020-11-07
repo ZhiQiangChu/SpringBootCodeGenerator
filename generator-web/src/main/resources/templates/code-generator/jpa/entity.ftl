@@ -21,23 +21,23 @@ import io.swagger.annotations.ApiModelProperty;
 @Entity
 @Data
 @Table(name="${classInfo.tableName}")<#if swagger?exists && swagger==true>
-@ApiModel("${classInfo.classComment}")</#if>
+    @ApiModel("${classInfo.classComment}")</#if>
 public class ${classInfo.className} implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue
+@Id
+@GeneratedValue
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-<#list classInfo.fieldList as fieldItem >
-    /**
-    * ${fieldItem.fieldComment}
-    */<#if swagger?exists && swagger==true>
-    @ApiModelProperty("${fieldItem.fieldComment}")</#if>
-    @Column(name="${fieldItem.columnName}")
-    private ${fieldItem.fieldClass} ${fieldItem.fieldName};
+    <#list classInfo.fieldList as fieldItem >
+        /**
+        * ${fieldItem.fieldComment}
+        */<#if swagger?exists && swagger==true>
+        @ApiModelProperty("${fieldItem.fieldComment}")</#if>
+        @Column(name="${fieldItem.columnName}")
+        private ${fieldItem.fieldClass} ${fieldItem.fieldName};
 
-</#list>
+    </#list>
     public ${classInfo.className}() {
     }
 </#if>

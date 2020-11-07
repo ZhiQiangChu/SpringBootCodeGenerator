@@ -2,7 +2,12 @@ package com.softdev.system.generator.util;
 
 import org.apache.commons.io.filefilter.FileFilterUtils;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -407,8 +412,7 @@ public class FileUtils {
     }
 
     /**
-     * 根据URL获取文件
-     * 获取文件后，可以使用readFileToString方法读取文件内容
+     * 根据URL获取文件 获取文件后，可以使用readFileToString方法读取文件内容
      *
      * @param url 比如：file:/Users/Shared/666/selenium
      * @return
@@ -431,9 +435,7 @@ public class FileUtils {
 
 
     /**
-     * 修改文件、文件夹的修改时间（不是创建时间）
-     * 文件不存在则新建
-     * 文件夹不存在则新建父级目录
+     * 修改文件、文件夹的修改时间（不是创建时间） 文件不存在则新建 文件夹不存在则新建父级目录
      *
      * @param file
      * @throws IOException
@@ -443,8 +445,7 @@ public class FileUtils {
     }
 
     /**
-     * File转换为URL
-     * 可以传入多个new File()
+     * File转换为URL 可以传入多个new File()
      *
      * @param file
      * @return
@@ -455,8 +456,7 @@ public class FileUtils {
     }
 
     /**
-     * 等待确定目标文件、文件夹是否创建
-     * 在seconds秒内创建完成返回true
+     * 等待确定目标文件、文件夹是否创建 在seconds秒内创建完成返回true
      *
      * @param file    文件、文件夹
      * @param seconds 秒
@@ -468,11 +468,8 @@ public class FileUtils {
     }
 
     /**
-     * 字符流写入文件，写字符串文本，用字符流
-     * 继承自Writer,将FileOutputStream字符流转换为字节流写入文件
-     * FileOutputStream参数true为追加写
-     * 字节流写入中文不会有乱码
-     * Charset传入编码格式StandardCharsets.UTF_8
+     * 字符流写入文件，写字符串文本，用字符流 继承自Writer,将FileOutputStream字符流转换为字节流写入文件 FileOutputStream参数true为追加写
+     * 字节流写入中文不会有乱码 Charset传入编码格式StandardCharsets.UTF_8
      */
     public static void writeStringToFile_io(String file, String data, String charset, boolean append) throws IOException {
         OutputStreamWriter os = new OutputStreamWriter(new FileOutputStream(new File(file), append), charset);
@@ -494,8 +491,7 @@ public class FileUtils {
     }
 
     /**
-     * 字符串写入文件
-     * 可以接收CharSequence类型的数据
+     * 字符串写入文件 可以接收CharSequence类型的数据
      *
      * @param file        文件不存在自动创建
      * @param data

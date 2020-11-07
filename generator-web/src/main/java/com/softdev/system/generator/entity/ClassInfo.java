@@ -1,8 +1,8 @@
 package com.softdev.system.generator.entity;
 
-import lombok.Data;
-
 import java.util.List;
+
+import lombok.Data;
 
 /**
  * class info

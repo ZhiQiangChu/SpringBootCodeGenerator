@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
@@ -196,13 +195,13 @@ public class TableParseUtil {
                         //20191115 MOSHOW.K.ZHENG 支持对tinyint的特殊处理
                         fieldClass = paramInfo.getTinyintTransType();
                     } else if (columnLine.contains(" int") || columnLine.contains(" smallint")) {
-                        fieldClass = (paramInfo.isPackageType())?Integer.class.getSimpleName():"int";
+                        fieldClass = (paramInfo.isPackageType()) ? Integer.class.getSimpleName() : "int";
                     } else if (columnLine.contains(" bigint")) {
-                        fieldClass = (paramInfo.isPackageType())?Long.class.getSimpleName():"long";
+                        fieldClass = (paramInfo.isPackageType()) ? Long.class.getSimpleName() : "long";
                     } else if (columnLine.contains(" float")) {
-                        fieldClass = (paramInfo.isPackageType())?Float.class.getSimpleName():"float";
+                        fieldClass = (paramInfo.isPackageType()) ? Float.class.getSimpleName() : "float";
                     } else if (columnLine.contains(" double")) {
-                        fieldClass = (paramInfo.isPackageType())?Double.class.getSimpleName():"double";
+                        fieldClass = (paramInfo.isPackageType()) ? Double.class.getSimpleName() : "double";
                     } else if (columnLine.contains(" time") || columnLine.contains(" date") || columnLine.contains(" datetime") || columnLine.contains(" timestamp")) {
                         fieldClass = paramInfo.getTimeTransType();
                     } else if (columnLine.contains(" varchar") || columnLine.contains(" text") || columnLine.contains(" char")
@@ -229,9 +228,9 @@ public class TableParseUtil {
                                 }
                                 //数字范围9位及一下用Integer，大的用Long
                                 if (length <= 9) {
-                                    fieldClass = (paramInfo.isPackageType())?Integer.class.getSimpleName():"int";
+                                    fieldClass = (paramInfo.isPackageType()) ? Integer.class.getSimpleName() : "int";
                                 } else {
-                                    fieldClass = (paramInfo.isPackageType())?Long.class.getSimpleName():"long";
+                                    fieldClass = (paramInfo.isPackageType()) ? Long.class.getSimpleName() : "long";
                                 }
                             } else {
                                 //有小数位数一律使用BigDecimal
@@ -242,7 +241,7 @@ public class TableParseUtil {
                         }
                     } else if (columnLine.contains(" boolean")) {
                         //20190910 MOSHOW.K.ZHENG 新增对boolean的处理（感谢@violinxsc的反馈）以及修复tinyint类型字段无法生成boolean类型问题（感谢@hahaYhui的反馈）
-                        fieldClass = (paramInfo.isPackageType())?Boolean.class.getSimpleName():"boolean";
+                        fieldClass = (paramInfo.isPackageType()) ? Boolean.class.getSimpleName() : "boolean";
                     } else {
                         fieldClass = String.class.getSimpleName();
                     }

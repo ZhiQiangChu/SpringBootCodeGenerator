@@ -1,6 +1,5 @@
 package com.softdev.system.generator.config;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.context.WebServerInitializedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -8,6 +7,8 @@ import org.springframework.stereotype.Component;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description 通过实现ApplicationListener接口动态获取tomcat启动端口和访问路径，通过InetAddress类获取主机的ip地址，最后控制台打印项目访问地址

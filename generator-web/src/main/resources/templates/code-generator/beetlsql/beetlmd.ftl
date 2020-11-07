@@ -21,11 +21,11 @@ updateSample
 
 condition
 ===
-    1 = 1
+1 = 1
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
     <#list classInfo.fieldList as fieldItem >
-    @if(!isEmpty(${fieldItem.fieldName})){
-      and `${fieldItem.columnName}`=#${fieldItem.fieldName}#
-    @}
+        @if(!isEmpty(${fieldItem.fieldName})){
+        and `${fieldItem.columnName}`=#${fieldItem.fieldName}#
+        @}
     </#list>
 </#if>

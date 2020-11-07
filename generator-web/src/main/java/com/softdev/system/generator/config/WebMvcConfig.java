@@ -2,6 +2,7 @@ package com.softdev.system.generator.config;
 
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -11,9 +12,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
-*  2019-2-11 liutf WebMvcConfig 整合 cors 和 SpringMvc MessageConverter
-*/
+ * 2019-2-11 liutf WebMvcConfig 整合 cors 和 SpringMvc MessageConverter
+ */
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 

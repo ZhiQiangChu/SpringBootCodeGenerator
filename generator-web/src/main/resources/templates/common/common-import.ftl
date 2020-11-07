@@ -1,14 +1,16 @@
 <#macro commonStyle>
 
 <#-- favicon -->
-<link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="favicon.ico"/>
 
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+          name="viewport">
     <!-- Bootstrap 4 -->
-    <link href="//cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet">
     <!-- Font Awesome -->
     <link href="//cdn.staticfile.org/font-awesome/5.11.2/css/fontawesome.min.css" rel="stylesheet">
     <!-- Ionicons -->
@@ -25,7 +27,7 @@
     <script src="//cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<script>var base_url = '${request.contextPath}';</script>
+    <script>var base_url = '${request.contextPath}';</script>
 
 </#macro>
 
@@ -53,7 +55,10 @@
             <footer class="bd-footer text-muted" role="contentinfo">
                 <div class="container">
                     <strong>Copyright &copy; ${.now?string('yyyy')}-2022 &nbsp;
-                        <p><a href="https://github.com/moshowgame/SpringBootCodeGenerator">SpringBootCodeGenerator</a>由<a href="https://blog.csdn.net/moshowgame" target="_blank">@Moshow郑锴</a> 开发维护。 由 <a href="https://www.bejson.com">BeJson三叔 </a> 提供在线版本。点击<a href="#" id="donate2">赞赏</a>。</p>
+                        <p><a href="https://github.com/moshowgame/SpringBootCodeGenerator">SpringBootCodeGenerator</a>由<a
+                                    href="https://blog.csdn.net/moshowgame" target="_blank">@Moshow郑锴</a>
+                            开发维护。 由 <a href="https://www.bejson.com">BeJson三叔 </a> 提供在线版本。点击<a
+                                    href="#" id="donate2">赞赏</a>。</p>
                 </div>
             </footer>
         </footer>
@@ -61,12 +66,12 @@
 </#macro>
 
 <#macro viewerCounter>
-var _hmt = _hmt || [];
-(function() {
-  //百度统计一下
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?97fd5ca1a4298ac8349c7e0de9029a0f";
-  var s = document.getElementsByTagName("script")[0];
-  s.parentNode.insertBefore(hm, s);
-})();
+    var _hmt = _hmt || [];
+    (function() {
+    //百度统计一下
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?97fd5ca1a4298ac8349c7e0de9029a0f";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
 </#macro>

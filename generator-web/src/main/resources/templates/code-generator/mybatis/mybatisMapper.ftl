@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${packageName}.dao.I${classInfo.className}Mapper">
+<mapper namespace="${packageName}.mapper.I${classInfo.className}Mapper">
 
-    <resultMap id="BaseResultMap" type="${packageName}.entity.${classInfo.className}Entity" >
+    <resultMap id="BaseResultMap" type="${packageName}.entity.${classInfo.className}Entity">
         <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
             <#list classInfo.fieldList as fieldItem >
-                <result column="${fieldItem.columnName}" property="${fieldItem.fieldName}" />
+                <result column="${fieldItem.columnName}" property="${fieldItem.fieldName}"/>
             </#list>
         </#if>
     </resultMap>
@@ -19,39 +19,40 @@
         </#if>
     </sql>
 
-    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id" parameterType="${packageName}.entity.${classInfo.className}Entity">
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id"
+            parameterType="${packageName}.entity.${classInfo.className}Entity">
         INSERT INTO ${classInfo.tableName}
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-                <#list classInfo.fieldList as fieldItem >
-                    <#if fieldItem.columnName != "id" >
-                        ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
-                        ${fieldItem.columnName}<#if fieldItem_has_next>,</#if>
-                        ${r"</if>"}
-                    </#if>
-                </#list>
+            <#list classInfo.fieldList as fieldItem >
+                <#if fieldItem.columnName != "id" >
+                ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
+                ${fieldItem.columnName}<#if fieldItem_has_next>,</#if>
+                ${r"</if>"}
+                </#if>
+            </#list>
             </#if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
-                <#list classInfo.fieldList as fieldItem >
-                    <#if fieldItem.columnName != "id" >
-                    <#--<#if fieldItem.columnName="addtime" || fieldItem.columnName="updatetime" >
-                    ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
-                        NOW()<#if fieldItem_has_next>,</#if>
-                    ${r"</if>"}
-                    <#else>-->
-                        ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
-                        ${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>
-                        ${r"</if>"}
-                    <#--</#if>-->
-                    </#if>
-                </#list>
+            <#list classInfo.fieldList as fieldItem >
+                <#if fieldItem.columnName != "id" >
+                <#--<#if fieldItem.columnName="addtime" || fieldItem.columnName="updatetime" >
+                ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
+                    NOW()<#if fieldItem_has_next>,</#if>
+                ${r"</if>"}
+                <#else>-->
+                ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}
+                ${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>
+                ${r"</if>"}
+                <#--</#if>-->
+                </#if>
+            </#list>
             </#if>
         </trim>
     </insert>
 
-    <delete id="delete" >
+    <delete id="delete">
         DELETE FROM ${classInfo.tableName}
         WHERE id = ${r"#{id}"}
     </delete>
@@ -61,7 +62,7 @@
         <set>
             <#list classInfo.fieldList as fieldItem >
                 <#if fieldItem.columnName != "id" && fieldItem.columnName != "AddTime" && fieldItem.columnName != "UpdateTime" >
-                    ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}${fieldItem.columnName} = ${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>${r"</if>"}
+                ${r"<if test ='null != "}${fieldItem.fieldName}${r"'>"}${fieldItem.columnName} = ${r"#{"}${fieldItem.fieldName}${r"}"}<#if fieldItem_has_next>,</#if>${r"</if>"}
                 </#if>
             </#list>
         </set>
@@ -70,13 +71,15 @@
 
 
     <select id="load" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List" />
+        SELECT
+            <include refid="Base_Column_List"/>
         FROM ${classInfo.tableName}
         WHERE id = ${r"#{id}"}
     </select>
 
     <select id="pageList" resultMap="BaseResultMap">
-        SELECT <include refid="Base_Column_List" />
+        SELECT
+            <include refid="Base_Column_List"/>
         FROM ${classInfo.tableName}
         LIMIT ${r"#{offset}"}, ${r"#{pageSize}"}
     </select>

@@ -5,7 +5,7 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.util.Locale;
 import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * freemarker tool
@@ -27,8 +29,7 @@ public class FreemarkerUtil {
     private Configuration configuration;
 
     /**
-     * 传入需要转义的字符串进行转义
-     * 20200503 zhengkai.blog.csdn.net
+     * 传入需要转义的字符串进行转义 20200503 zhengkai.blog.csdn.net
      */
     public static String escapeString(String originStr) {
         return originStr.replaceAll("井", "\\#").replaceAll("￥", "\\$");

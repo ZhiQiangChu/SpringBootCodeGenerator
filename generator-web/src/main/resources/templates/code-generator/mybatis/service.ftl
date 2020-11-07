@@ -1,36 +1,37 @@
 import java.util.Map;
+import ${packageName}.base.dto.${classInfo.className}Dto;
 
 /**
-* @author ${authorName}
-* @Version 1.0.0
-* @date ${.now?string('yyyy-MM-dd')}
-* @description ${classInfo.classComment}
-*/
+ * @author ${authorName}
+ * @Version 1.0.0
+ * @date ${.now?string('yyyy-MM-dd')}
+ * @description ${classInfo.classComment}
+ */
 public interface I${classInfo.className}Service {
 
     /**
-    * 新增
-    */
-    public ReturnT<String> insert(${classInfo.className} ${classInfo.className?uncap_first});
+     * 新增
+     */
+    public ResponseBaseDTO insert(${classInfo.className}Dto ${classInfo.className?uncap_first}Dto);
 
     /**
-    * 删除
-    */
-    public ReturnT<String> delete(int id);
+     * 删除
+     */
+    public ResponseBaseDTO delete(int id);
 
     /**
-    * 更新
-    */
-    public ReturnT<String> update(${classInfo.className} ${classInfo.className?uncap_first});
+     * 更新
+     */
+    public ResponseBaseDTO update(${classInfo.className}Dto ${classInfo.className?uncap_first}Dto);
 
     /**
-    * 根据主键 id 查询
-    */
-    public ${classInfo.className} load(int id);
+     * 根据主键 id 查询
+     */
+    public ResponseBaseDTO queryById(int id);
 
     /**
-    * 分页查询
-    */
-    public Map<String,Object> pageList(int offset, int pagesize);
+     * 分页查询
+     */
+    public ResponseBaseDTO pageList(int offset, int pagesize);
 
 }

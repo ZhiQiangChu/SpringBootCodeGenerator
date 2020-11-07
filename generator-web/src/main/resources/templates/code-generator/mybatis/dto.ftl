@@ -4,11 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 /**
-* @author ${authorName}
-* @Version 1.0.0
-* @date ${.now?string('yyyy-MM-dd')}
-* @description ${classInfo.classComment}
-*/
+ * @author ${authorName}
+ * @Version 1.0.0
+ * @date ${.now?string('yyyy-MM-dd')}
+ * @description ${classInfo.classComment}
+ */
 @Data<#if swagger?exists && swagger==true>
 @ApiModel("${classInfo.classComment}")</#if>
 public class ${classInfo.className}Dto implements Serializable {

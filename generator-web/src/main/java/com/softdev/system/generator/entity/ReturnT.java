@@ -1,8 +1,8 @@
 package com.softdev.system.generator.entity;
 
-import lombok.Data;
-
 import java.io.Serializable;
+
+import lombok.Data;
 
 /**
  * common returnT:公共返回封装类

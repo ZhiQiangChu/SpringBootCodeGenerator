@@ -1,7 +1,6 @@
 package com.softdev.system.generator.service;
 
 import freemarker.template.TemplateException;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.Map;

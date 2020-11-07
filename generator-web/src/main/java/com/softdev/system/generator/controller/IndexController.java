@@ -6,7 +6,7 @@ import com.softdev.system.generator.entity.ReturnT;
 import com.softdev.system.generator.service.GeneratorService;
 import com.softdev.system.generator.util.FileUtils;
 import com.softdev.system.generator.util.TableParseUtil;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * spring boot code generator
@@ -79,52 +81,52 @@ public class IndexController {
         Map<String, String> result = generatorService.getResultByParams(params);
 
 
-        for(Map.Entry<String, String> entry : result.entrySet()){
+        for (Map.Entry<String, String> entry : result.entrySet()) {
             String mapKey = entry.getKey();
             String mapValue = entry.getValue();
             if ("tableName".equals(mapKey)) {
                 continue;
             }
-            System.out.println(mapKey+":\n"+mapValue);
-            String fileName =  paramInfo.getPackageName().replace(".","/") +"/";
+            System.out.println(mapKey + ":\n" + mapValue);
+            String fileName = paramInfo.getPackageName().replace(".", "/") + "/";
 
             String javaFile = "";
 
             switch (mapKey) {
 
-                case "json" :
-                    fileName += mapKey+".json";
+                case "json":
+                    fileName += mapKey + ".json";
                     break;
-                case "sql" :
-                    fileName += mapKey+".sql";
+                case "sql":
+                    fileName += mapKey + ".sql";
                     break;
-                case "xml" :
-                    fileName += mapKey+".xml";
+                case "xml":
+                    fileName += mapKey + ".xml";
                     break;
                 case "mybatisMapper":
                     String[] strings2 = mapValue.split(">");
-                    for (String ss :strings2) {
-                        if (ss.startsWith("\r\n<mapper") || ss.startsWith("\n<mapper") ||  ss.startsWith("<mapper")) {
+                    for (String ss : strings2) {
+                        if (ss.startsWith("\r\n<mapper") || ss.startsWith("\n<mapper") || ss.startsWith("<mapper")) {
                             int index = ss.lastIndexOf(".");
-                            javaFile  = ss.substring(index+1,ss.length()-1);
+                            javaFile = ss.substring(index + 1, ss.length() - 1);
                             System.out.println(javaFile);
                         }
                     }
-                    fileName += mapKey+"/"+javaFile+".xml";
+                    fileName += mapKey + "/" + javaFile + ".xml";
                     break;
                 default:
                     String[] strings = mapValue.split("\n");
-                    for (String str :strings) {
+                    for (String str : strings) {
                         if (str.startsWith("public class") || str.startsWith("public interface")) {
                             javaFile = str.split(" ")[2];
                             System.out.println(javaFile);
                         }
                     }
-                    fileName += mapKey+"/"+javaFile+".java";
+                    fileName += mapKey + "/" + javaFile + ".java";
 
             }
-            log.info("fileName  >>>>  "+fileName);
-            FileUtils.writeStringToFile(fileName,mapValue,"utf-8",false);
+            log.info("fileName  >>>>  " + fileName);
+            FileUtils.writeStringToFile(fileName, mapValue, "utf-8", false);
 
         }
 

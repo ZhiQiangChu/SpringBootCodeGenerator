@@ -23,5 +23,4 @@ import org.springframework.stereotype.Repository;
 public interface ${classInfo.className}Repository extends JpaRepository<${classInfo.className},Integer> {
 
 
-
 }

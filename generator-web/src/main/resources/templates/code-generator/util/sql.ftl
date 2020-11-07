@@ -1,4 +1,3 @@
-
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
     SELECT
     <#list classInfo.fieldList as fieldItem >
@@ -14,7 +13,7 @@
 
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
     SELECT
-        *
+    *
     FROM
     ${classInfo.tableName} t1
     LEFT JOIN xxx t2
