@@ -1,6 +1,6 @@
 package ${packageName}.base.mapper;
 
-import ${packageName}.entity.${classInfo.className};
+import ${packageName}.entity.${classInfo.className}Entity;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 <#--import org.springframework.stereotype.Repository;-->

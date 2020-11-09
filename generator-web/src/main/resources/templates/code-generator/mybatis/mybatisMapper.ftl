@@ -70,7 +70,7 @@
     </update>
 
 
-    <select id="load" resultMap="BaseResultMap">
+    <select id="queryById" resultMap="BaseResultMap">
         SELECT
             <include refid="Base_Column_List"/>
         FROM ${classInfo.tableName}

@@ -1,6 +1,9 @@
 import org.springframework.stereotype.Service;
 import ${packageName}.mapper.I${classInfo.className}Mapper;
 import ${packageName}.entity.${classInfo.className}Entity;
+import ${packageName}.dto.${classInfo.className}Dto;
+import ${packageName}.base.dto.ResponseBaseDTO;
+import ${packageName}.service.I${classInfo.className}Service;
 import ${packageName}.base.util.BeanCopyUtils;
 import ${packageName}.base.enums.ErrorCodeEnum;
 import javax.annotation.Resource;

@@ -1,12 +1,13 @@
 package ${packageName}.controller;
 
 import ${packageName}.base.dto.*;
-import ${packageName}.entity.${classInfo.className};
 import ${packageName}.service.I${classInfo.className}Service;
+import ${packageName}.dto.${classInfo.className}Dto;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -38,8 +39,8 @@ public class ${classInfo.className}Controller {
      **/
     @RequestMapping("/insert")
     @ApiOperation(value = "保存${classInfo.className}",notes = "保存${classInfo.className}")
-    <#--    @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "${classInfo.className}",required = true)-->
-    public ResponseBaseDTO insert(${classInfo.className}Dto ${classInfo.className?uncap_first}Dto){
+    @ApiImplicitParam(name = "${classInfo.className?uncap_first}Dto",value = "${classInfo.classComment}Dto",dataType = "${classInfo.className}Dto",required = true)
+    public ResponseBaseDTO insert(@RequestBody ${classInfo.className}Dto ${classInfo.className?uncap_first}Dto){
         return i${classInfo.className}Service.insert(${classInfo.className?uncap_first}Dto);
     }
 
@@ -50,8 +51,8 @@ public class ${classInfo.className}Controller {
      **/
     @RequestMapping("/delete")
     @ApiOperation(value = "刪除${classInfo.className}",notes = "刪除${classInfo.className}")
-    @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "int",required = true)
-    public ResponseBaseDTO delete(int id){
+    @ApiImplicitParam(name = "id",value = "id",dataType = "Integer",required = true)
+    public ResponseBaseDTO delete(@RequestParam int id){
         return i${classInfo.className}Service.delete(id);
     }
 
@@ -62,8 +63,8 @@ public class ${classInfo.className}Controller {
      **/
     @RequestMapping("/update")
     @ApiOperation(value = "更新${classInfo.className}",notes = "更新${classInfo.className}")
-    <#--    @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "${classInfo.className}",required = true)-->
-    public ResponseBaseDTO update(${classInfo.className}Dto ${classInfo.className?uncap_first}Dto){
+    @ApiImplicitParam(name = "${classInfo.className?uncap_first}Dto",value = "${classInfo.classComment}Dto",dataType = "${classInfo.className}Dto",required = true)
+    public ResponseBaseDTO update(@RequestBody ${classInfo.className}Dto ${classInfo.className?uncap_first}Dto){
         return i${classInfo.className}Service.update(${classInfo.className?uncap_first}Dto);
     }
 
@@ -74,8 +75,8 @@ public class ${classInfo.className}Controller {
      **/
     @RequestMapping("/load")
     @ApiOperation(value = "根据主键查询${classInfo.className}",notes = "根据主键查询${classInfo.className}")
-    @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "int",required = true)
-    public ResponseBaseDTO load(int id){
+    @ApiImplicitParam(name = "id",value = "id",dataType = "Integer",required = true)
+    public ResponseBaseDTO queryById(@RequestParam int id){
         return i${classInfo.className}Service.queryById(id);
     }
 

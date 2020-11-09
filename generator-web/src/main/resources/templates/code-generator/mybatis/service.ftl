@@ -1,5 +1,7 @@
 import java.util.Map;
 import ${packageName}.dto.${classInfo.className}Dto;
+import ${packageName}.base.dto.ResponseBaseDTO;
+
 
 /**
  * @author ${authorName}
