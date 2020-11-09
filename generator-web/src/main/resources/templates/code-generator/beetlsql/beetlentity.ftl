@@ -11,7 +11,7 @@ import java.util.List;
 */
 @Data<#if swagger?exists && swagger==true>
     @ApiModel("${classInfo.classComment}")</#if>
-public class ${classInfo.className}Dto implements Serializable {
+public class ${classInfo.className}Entity implements Serializable {
 
 private static final long serialVersionUID = 1L;
 

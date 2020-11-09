@@ -77,12 +77,12 @@
         WHERE id = ${r"#{id}"}
     </select>
 
-    <select id="pageList" resultMap="BaseResultMap">
-        SELECT
-            <include refid="Base_Column_List"/>
-        FROM ${classInfo.tableName}
-        LIMIT ${r"#{offset}"}, ${r"#{pageSize}"}
-    </select>
+<#--    <select id="pageList" resultMap="BaseResultMap">-->
+<#--        SELECT-->
+<#--            <include refid="Base_Column_List"/>-->
+<#--        FROM ${classInfo.tableName}-->
+<#--        LIMIT ${r"#{offset}"}, ${r"#{pageSize}"}-->
+<#--    </select>-->
 
     <select id="pageListCount" resultType="java.lang.Integer">
         SELECT count(1)

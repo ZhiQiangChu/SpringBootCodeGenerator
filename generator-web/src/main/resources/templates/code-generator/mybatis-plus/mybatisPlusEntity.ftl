@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 @Data<#if swagger?exists && swagger==true>
 @ApiModel("${classInfo.classComment}")</#if>
-public class ${classInfo.className} implements Serializable {
+public class ${classInfo.className}Entity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,7 +30,7 @@ public class ${classInfo.className} implements Serializable {
     private ${fieldItem.fieldClass} ${fieldItem.fieldName};
 
     </#list>
-    public ${classInfo.className}() {
+    public ${classInfo.className}Entity() {
     }
 </#if>
 

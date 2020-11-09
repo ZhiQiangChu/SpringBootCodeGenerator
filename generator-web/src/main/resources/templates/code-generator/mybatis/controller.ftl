@@ -63,7 +63,7 @@ public class ${classInfo.className}Controller {
     @RequestMapping("/update")
     @ApiOperation(value = "更新${classInfo.className}",notes = "更新${classInfo.className}")
     <#--    @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "${classInfo.className}",required = true)-->
-    public ResponseBaseDTO update(${classInfo.className}RequestDto ${classInfo.className?uncap_first}Dto){
+    public ResponseBaseDTO update(${classInfo.className}Dto ${classInfo.className?uncap_first}Dto){
         return i${classInfo.className}Service.update(${classInfo.className?uncap_first}Dto);
     }
 
@@ -76,23 +76,23 @@ public class ${classInfo.className}Controller {
     @ApiOperation(value = "根据主键查询${classInfo.className}",notes = "根据主键查询${classInfo.className}")
     @ApiImplicitParam(name = "${classInfo.className?uncap_first}",value = "${classInfo.classComment}",dataType = "int",required = true)
     public ResponseBaseDTO load(int id){
-        return i${classInfo.className}Service.load(id);
+        return i${classInfo.className}Service.queryById(id);
     }
 
-    /**
-     * 查询 分页查询
-     * @author ${authorName}
-     * @date ${.now?string('yyyy/MM/dd')}
-     **/
-    @RequestMapping("/pageList")
-    @ApiOperation(value = "分页查询",notes = "分页查询")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name="offset",value="偏移量",required=true,paramType="query"),
-            @ApiImplicitParam(name="pagesize",value="每页数量",required=true,paramType="query"),
-    })
-    public ResponseBaseDTO pageList(@RequestParam(required = false, defaultValue = "0") int offset,
-                                    @RequestParam(required = false, defaultValue = "10") int pagesize) {
-        return i${classInfo.className}Service.pageList(offset, pagesize);
-    }
+<#--    /**-->
+<#--     * 查询 分页查询-->
+<#--     * @author ${authorName}-->
+<#--     * @date ${.now?string('yyyy/MM/dd')}-->
+<#--     **/-->
+<#--    @RequestMapping("/pageList")-->
+<#--    @ApiOperation(value = "分页查询",notes = "分页查询")-->
+<#--    @ApiImplicitParams({-->
+<#--            @ApiImplicitParam(name="offset",value="偏移量",required=true,paramType="query"),-->
+<#--            @ApiImplicitParam(name="pagesize",value="每页数量",required=true,paramType="query"),-->
+<#--    })-->
+<#--    public ResponseBaseDTO pageList(@RequestParam(required = false, defaultValue = "0") int offset,-->
+<#--                                    @RequestParam(required = false, defaultValue = "10") int pagesize) {-->
+<#--        return i${classInfo.className}Service.pageList(offset, pagesize);-->
+<#--    }-->
 
 }

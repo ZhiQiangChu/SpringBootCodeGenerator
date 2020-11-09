@@ -1,5 +1,5 @@
 import java.util.Map;
-import ${packageName}.base.dto.${classInfo.className}Dto;
+import ${packageName}.dto.${classInfo.className}Dto;
 
 /**
  * @author ${authorName}
@@ -29,9 +29,9 @@ public interface I${classInfo.className}Service {
      */
     public ResponseBaseDTO queryById(int id);
 
-    /**
-     * 分页查询
-     */
-    public ResponseBaseDTO pageList(int offset, int pagesize);
+<#--    /**-->
+<#--     * 分页查询-->
+<#--     */-->
+<#--    public ResponseBaseDTO pageList(int offset, int pagesize);-->
 
 }

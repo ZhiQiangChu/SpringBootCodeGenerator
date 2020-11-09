@@ -1,6 +1,6 @@
-package ${packageName}.base.mapper
+package ${packageName}.base.mapper;
 
-import ${packageName}.base.entity.${classInfo.className};
+import ${packageName}.entity.${classInfo.className};
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 <#--import org.springframework.stereotype.Repository;-->
@@ -21,7 +21,7 @@ public interface I${classInfo.className}Mapper {
      * @author ${authorName}
      * @date ${.now?string('yyyy/MM/dd')}
      **/
-    int insert(${classInfo.className} ${classInfo.className?uncap_first});
+    int insert(${classInfo.className}Entity ${classInfo.className?uncap_first}Entity);
 
     /**
      * 刪除
@@ -35,21 +35,21 @@ public interface I${classInfo.className}Mapper {
      * @author ${authorName}
      * @date ${.now?string('yyyy/MM/dd')}
      **/
-    int update(${classInfo.className} ${classInfo.className?uncap_first});
+    int update(${classInfo.className}Entity ${classInfo.className?uncap_first}Entity);
 
     /**
      * 查询 根据主键 id 查询
      * @author ${authorName}
      * @date ${.now?string('yyyy/MM/dd')}
      **/
-    ${classInfo.className} queryById(int id);
+    ${classInfo.className}Entity queryById(int id);
 
-    /**
-     * 查询 分页查询
-     * @author ${authorName}
-     * @date ${.now?string('yyyy/MM/dd')}
-     **/
-    List<${classInfo.className}> pageList(int offset,int pagesize);
+<#--    /**-->
+<#--     * 查询 分页查询-->
+<#--     * @author ${authorName}-->
+<#--     * @date ${.now?string('yyyy/MM/dd')}-->
+<#--     **/-->
+<#--    List<${classInfo.className}Entity> pageList(int offset,int pagesize);-->
 
     /**
      * 查询 分页查询 count
