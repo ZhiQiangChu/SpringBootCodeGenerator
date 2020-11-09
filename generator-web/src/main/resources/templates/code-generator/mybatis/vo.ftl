@@ -24,7 +24,7 @@ public class ${classInfo.className}Dto implements Serializable {
 
 <#if classInfo.fieldList?exists && classInfo.fieldList?size gt 0>
     <#list classInfo.fieldList as fieldItem >
-    @ApiModelProperty(value = "${fieldItem.columnName}", example = "${fieldItem.fieldComment}", required = true, dataType = "${fieldItem.fieldClass}")
+    @ApiModelProperty(value = "${fieldItem.fieldComment}", example = "${fieldItem.fieldComment}", required = true, dataType = "${fieldItem.fieldClass}")
     private ${fieldItem.fieldClass} ${fieldItem.fieldName};
     </#list>
 </#if>
