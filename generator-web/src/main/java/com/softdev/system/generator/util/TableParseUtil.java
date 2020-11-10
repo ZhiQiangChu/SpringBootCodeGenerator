@@ -394,7 +394,7 @@ public class TableParseUtil {
             fieldInfo.setFieldName(jsonField);
             fieldInfo.setColumnName(jsonField);
             fieldInfo.setFieldClass(String.class.getSimpleName());
-            fieldInfo.setFieldComment("father:" + jsonField);
+            fieldInfo.setFieldComment(jsonField);
             fieldList.add(fieldInfo);
             if (jsonObject.get(jsonField) instanceof JSONArray) {
                 jsonObject.getJSONArray(jsonField).stream().forEach(arrayObject -> {
@@ -402,7 +402,7 @@ public class TableParseUtil {
                     fieldInfo2.setFieldName(arrayObject.toString());
                     fieldInfo2.setColumnName(arrayObject.toString());
                     fieldInfo2.setFieldClass(String.class.getSimpleName());
-                    fieldInfo2.setFieldComment("children:" + arrayObject.toString());
+                    fieldInfo2.setFieldComment(arrayObject.toString());
                     fieldList.add(fieldInfo2);
                 });
             } else if (jsonObject.get(jsonField) instanceof JSONObject) {
@@ -411,7 +411,7 @@ public class TableParseUtil {
                     fieldInfo2.setFieldName(arrayObject.toString());
                     fieldInfo2.setColumnName(arrayObject.toString());
                     fieldInfo2.setFieldClass(String.class.getSimpleName());
-                    fieldInfo2.setFieldComment("children:" + arrayObject.toString());
+                    fieldInfo2.setFieldComment(arrayObject.toString());
                     fieldList.add(fieldInfo2);
                 });
             }

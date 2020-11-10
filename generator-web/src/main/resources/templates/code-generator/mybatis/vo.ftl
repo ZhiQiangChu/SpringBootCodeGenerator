@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Builder
 @Data
-@ApiModel(value = "${classInfo.tableName}", description ="${classInfo.classComment}")
+@ApiModel(value = "${classInfo.className?uncap_first}", description ="${classInfo.classComment}")
 public class ${classInfo.className}Dto implements Serializable {
 
     private static final long serialVersionUID = 1L;
